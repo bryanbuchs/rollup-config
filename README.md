@@ -1,6 +1,6 @@
 # Rollup Config
 
-Working to replace (webpack-minimal)[https://github.com/bryanbuchs/webpack-minimal]
+Working to replace [webpack-minimal](https://github.com/bryanbuchs/webpack-minimal)
 
 ## TODO
 
