@@ -1,0 +1,36 @@
+{{ attach_library('b2b/media-video') }}
+
+{%
+  set config = [
+    'media-video',
+    'media',
+  ]
+%}
+
+{% set wrapper = 'video-' ~ id|clean_unique_id %}
+{% set dialog = wrapper ~ '-dialog'%}
+
+<figure{{attributes.addClass(classes,config)}}>
+  {# video preview #}
+  <button data-video-modal="{{ wrapper }}" type="button" aria-label="Play Video">{{ img }}</button>
+
+  {# video player in modal #}
+  <div id="{{ wrapper }}" class="video-modal" aria-hidden>
+    <div tabindex="-1" class="video-modal-overlay" data-micromodal-close>
+      <div id="{{ dialog }}" role="dialog" aria-modal="true" aria-label="Watch the video" class="video-modal-dialog">
+        <button type="button" class="video-modal-close" aria-label="Close" data-micromodal-close></button>
+        <div class="video-modal-content">
+          {{ video }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# optional title #}
+  {% if title %}
+    <figcaption>
+      <p>{{ title }}</p>
+    </figcaption>
+  {% endif %}
+
+</figure>

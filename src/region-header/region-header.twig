@@ -1,0 +1,16 @@
+{{ attach_library('b2b/region-header') }}
+
+{%
+  set config = [
+    'region',
+    'region-header'
+  ]
+%}
+
+<header{{attributes.addClass(config)}}>
+  <mm-burger fx="squeeze"></mm-burger>
+  {% block content %}
+    {{ branding }}
+    {{ menu }}
+  {% endblock content %}
+</header>

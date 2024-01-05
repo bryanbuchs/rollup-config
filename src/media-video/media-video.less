@@ -1,8 +1,9 @@
-@import (reference) '../less/settings/*.less';
-@import (reference) '../less/mixins/*.less';
+@import (reference) '../../less/settings/*.less';
+@import (reference) '../../less/mixins/*.less';
 
 .media-video {
   max-width: 800px;
+
 
   @media @layout-small {
     background: @fog-light;
@@ -167,10 +168,10 @@
   top: calc(var(--gutter) / 2);
   right: calc(var(--gutter) / 2);
   background-color: transparent;
-  // background-image: svg-load(
-  //   '@fortawesome/fontawesome-free/svgs/solid/xmark.svg',
-  //   fill= @white
-  // );
+  background-image: svg-load(
+    '@fortawesome/fontawesome-free/svgs/solid/xmark.svg',
+    fill= @white
+  );
   background-position: center;
   background-size: contain;
 
