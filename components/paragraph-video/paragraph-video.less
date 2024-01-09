@@ -1,0 +1,105 @@
+.paragraph-video.view-mode--default {
+  --overlap-x: 80px; // size of column overlap
+  --offset-y: 100px; // size of downward shift of content area
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media @layout-small {
+    grid-template-areas:
+      'media'
+      'content';
+  }
+  @media @layout-desktop {
+    grid-template-columns: 1fr var(--overlap-x) 1fr;
+    grid-template-rows: auto var(--offset-y);
+  }
+
+  figure {
+    margin: 0;
+    grid-area: media;
+
+    @media @layout-desktop {
+      grid-area: unset;
+      grid-row: 1;
+      grid-column: 1 / span 2;
+      z-index: 2;
+      align-self: start;
+    }
+  }
+
+  figcaption {
+    margin: 0;
+    padding: 0;
+    background: fade(@fog-light, 75%);
+
+    @media @layout-small {
+      background-color: #3d9aaa;
+      color: @white;
+    }
+
+    p {
+      text-align: center;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0;
+      padding: 20px 30px;
+      color: inherit;
+
+      @media @layout-small {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+    }
+  }
+
+  @media @layout-desktop {
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+
+  .content {
+    padding: var(--gutter);
+    color: @white;
+    z-index: 1;
+    font-style: normal;
+    line-height: 1.5; /* 42px */
+    grid-area: content;
+
+    @media @layout-desktop {
+      grid-area: unset;
+      grid-row: 1 / span 2;
+      grid-column: 2 / span 2;
+      align-self: end;
+      padding-left: calc(var(--gutter) + var(--overlap-x));
+      font-size: 28px;
+    }
+  }
+
+  &.align-right {
+    @media @layout-desktop {
+      figure {
+        grid-column: 2 / span 2;
+      }
+      .content {
+        grid-column: 1 / span 2;
+        padding: var(--gutter);
+        padding-right: calc(var(--gutter) + var(--overlap-x));
+      }
+    }
+  }
+}
+
+
+.paragraph-video.view-mode--hero {
+  figcaption {
+    .visually-hidden();
+  }
+}

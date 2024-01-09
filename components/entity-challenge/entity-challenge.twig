@@ -1,0 +1,24 @@
+{{ attach_library('b2b/entity-challenge') }}
+
+{#
+  why is this config/attributes different than the others?
+  the drupal-attribute module is a JS-implementation of the
+  drupal/twig attributes class. When storybook passes new
+  data to the setClass method, it gets ADDED to existing
+  classes, and does not clear & reset.
+#}
+
+{%
+  set config = [
+    'entity-challenge',
+    'theme-' ~ theme,
+    'icon-' ~ icon
+  ]|join(' ')
+%}
+
+<article{{attributes.setAttribute('class',config)}}>
+  <div class="content">
+    <h3>{{ heading|typography }}</h3>
+    {{ text }}
+  </div>
+</article>

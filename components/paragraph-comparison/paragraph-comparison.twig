@@ -1,0 +1,118 @@
+{{ attach_library('b2b/paragraph-comparison') }}
+
+{%
+  set config = [
+    'layout-grid-wide',
+    'paragraph-comparison',
+    'paragraph',
+    'layout-grid'
+  ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+  <div class="layout-grid-wide">
+
+    {% if heading %}
+      <h2>{{ heading|typography }}</h2>
+    {% endif %}
+
+    {{ text }}
+
+    {% block table %}
+      <table class="table">
+        <thead>
+          <tr>
+            <td></td>
+            <th class="customized">Customized</th>
+            <th class="curated">Curated</th>
+            <th class="integrated">Integrated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Price</th>
+            <td class="customized">$$$&ndash;$$$$</td>
+            <td class="curated">$&ndash;$$$</td>
+            <td class="integrated">$&ndash;$$</td>
+          </tr>
+          <tr>
+            <th>Speed to start</th>
+            <td class="customized">3&ndash;6 months</td>
+            <td class="curated">1&ndash;2 weeks</td>
+            <td class="integrated">Immediate</td>
+          </tr>
+          <tr>
+            <th>Faculty engagement</th>
+            <td class="customized">HIGH: Planning & in-person</td>
+            <td class="curated">MEDIUM: In-person & online admin</td>
+            <td class="integrated">LOW: Online & live TAs</td>
+          </tr>
+          <tr>
+            <th>Support</th>
+            <td class="customized">Dedicated PM</td>
+            <td class="curated">Admin PM</td>
+            <td class="integrated">Online support</td>
+          </tr>
+        </tbody>
+      </table>
+    {% endblock %}
+
+    <div class="cards">
+      {% block cards %}
+
+        <div class="card customized">
+          <h3>Customized</h3>
+          <dl>
+            <dt>Price</dt>
+            <dd>$$$&ndash;$$$$</dd>
+
+            <dt>Speed to start</dt>
+            <dd>3&ndash;6 months</dd>
+
+            <dt>Faculty engagement</dt>
+            <dd>HIGH: Planning & in-person</dd>
+
+            <dt>Support</dt>
+            <dd>Dedicated PM</dd>
+          </dl>
+        </div>
+
+        <div class="card curated">
+          <h3>Curated</h3>
+          <dl>
+            <dt>Price</dt>
+            <dd>$&ndash;$$$</dd>
+
+            <dt>Speed to start</dt>
+            <dd>1&ndash;2 weeks</dd>
+
+            <dt>Faculty engagement</dt>
+            <dd>MEDIUM: In-person & online admin</dd>
+
+            <dt>Support</dt>
+            <dd>Admin PM</dd>
+          </dl>
+        </div>
+
+        <div class="card integrated">
+          <h3>Integrated</h3>
+          <dl>
+            <dt>Price</dt>
+            <dd>$&ndash;$$</dd>
+
+            <dt>Speed to start</dt>
+            <dd>Immediate</dd>
+
+            <dt>Faculty engagement</dt>
+            <dd>LOW: Online & live TAs</dd>
+
+            <dt>Support</dt>
+            <dd>Online support</dd>
+          </dl>
+        </div>
+      {% endblock %}
+    </div>
+
+
+  </div>
+</section>

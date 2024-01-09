@@ -1,0 +1,33 @@
+{{ attach_library('b2b/paragraph-hero') }}
+
+{% set config = [
+		'paragraph',
+    'paragraph-hero',
+    'theme-' ~ theme,
+		'layout-grid-fullbleed'
+  ] %}
+
+<section{{ attributes.setAttribute('class', config) }}>
+
+  <div class="overlay">
+    <div class="content">
+
+      <hgroup>
+        <h2>{{ heading|typography }}</h2>
+        <h3>{{ subheading|typography }}</h3>
+      </hgroup>
+
+      {{ text }}
+
+      <p>
+        {% include "@components/action/action.twig" with {
+        url: button.url,
+        label: button.label
+      } only %}
+      </p>
+    </div>
+  </div>
+
+  {{ media }}
+
+</section>

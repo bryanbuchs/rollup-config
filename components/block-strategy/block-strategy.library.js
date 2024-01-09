@@ -1,0 +1,1 @@
+import './block-strategy.less'

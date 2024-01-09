@@ -1,0 +1,62 @@
+.action {
+  border-radius: 45px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 360px;
+  height: 60px;
+  margin-inline: auto;
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+
+  // if the theme is applied directly to the button:
+  &.theme-olive {
+    color: @white;
+    background-color: @olive-dark;
+  }
+
+  &.theme-plum {
+    color: @white;
+    background-color: @plum;
+  }
+
+  &.theme-lagunita {
+    color: @white;
+    background-color: @lagunita;
+  }
+
+  // or: if the parent wrapper has a theme applied:
+  // (this should override the above rules)
+  .theme-olive & {
+    color: @olive-dark;
+    background: @white;
+  }
+
+  .theme-plum & {
+    color: @plum;
+    background: @white;
+  }
+
+  .theme-lagunita & {
+    color: @lagunita;
+    background: @white;
+  }
+
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: @easeOutSine;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.025);
+    transition-duration: 0.1s;
+    transition-timing-function: @easeInSine;
+  }
+}

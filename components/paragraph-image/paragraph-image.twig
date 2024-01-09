@@ -1,0 +1,13 @@
+{{ attach_library('b2b/paragraph-image') }}
+
+{%
+  set config = [
+    'paragraph',
+    'paragraph-image',
+    'layout-grid-wide'
+  ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+  {{ media }}
+</section>

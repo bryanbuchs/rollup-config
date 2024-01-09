@@ -1,0 +1,21 @@
+// content region expands to fill available space
+.region-content {
+  flex: 1 0 auto;
+  background-color: @white;
+  // position: relative;
+  // z-index: 1;
+
+  // it's also a layout-grid
+
+  > :first-child:not(.layout-grid-fullbleed) {
+    margin-top: var(--spacing);
+  }
+
+  // add bottom margin below the last element in the region
+  // skip if it's a fullbleed block, and also account for the
+  // replicated grid inside an `article`(node) in the region
+  > :last-child:not(.layout-grid-fullbleed),
+  > article > :last-child:not(.layout-grid-fullbleed) {
+    margin-bottom: var(--spacing);
+  }
+}

@@ -1,0 +1,25 @@
+{{ attach_library('b2b/entity-row') }}
+
+{%
+  set config = [
+    'layout-grid-fullbleed',
+    'entity-row',
+    'layout-grid',
+  ]
+%}
+
+<article{{ attributes.setAttribute('class',config) }}>
+  <div class="layout-grid-wide">
+
+    <div class="content">
+
+      <h3>{{ heading|typography }}</h3>
+
+      {{ text }}
+
+    </div>
+
+    {{ image }}
+
+  </div>
+</article>

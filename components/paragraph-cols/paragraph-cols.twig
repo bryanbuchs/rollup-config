@@ -1,0 +1,26 @@
+{{ attach_library('b2b/paragraph-cols') }}
+
+{% set config = [
+    'layout-grid-fullbleed',
+    'paragraph-cols',
+    'paragraph',
+    'layout-grid',
+  ] %}
+
+<section{{ attributes.setAttribute('class', config) }}>
+
+  <div class="layout-grid-wide">
+
+    {% if heading %}
+      <h2>{{ heading|typography }}</h2>
+    {% endif %}
+
+    <ul class="rows">
+      {% for row in rows %}
+        <li>
+          {{ row }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

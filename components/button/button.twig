@@ -1,0 +1,10 @@
+{{ attach_library('b2b/button') }}
+
+{%
+  set config = [
+    'button',
+		icon ? 'icon-' ~ icon : null
+  ]
+%}
+
+<a{{attributes.setAttribute('href',link).setAttribute('class', config)}}>{{ label }}</a>

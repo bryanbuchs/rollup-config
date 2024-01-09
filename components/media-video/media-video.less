@@ -1,0 +1,200 @@
+// shared by all view modes
+.media-video {
+  iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+// preview as trigger for player in modal
+.media-video.view-mode--default {
+  max-width: 800px;
+
+  @media @layout-small {
+    background: @fog-light;
+  }
+
+  button[data-video-modal] {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    appearance: none;
+    cursor: pointer;
+
+    img {
+      position: relative;
+      z-index: 1;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      width: clamp(65px, 20%, 140px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background-color: fade(@lagunita, 80%);
+      background-image: svg-load(
+        '@fortawesome/fontawesome-free/svgs/solid/play.svg',
+        fill= @white
+      );
+      background-position: 55% 50%;
+      background-size: 35% auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover,
+    &:focus {
+      &:after {
+        background-color: @lagunita;
+      }
+    }
+  }
+}
+
+// TRAILER MODAL
+
+.video-modal {
+  & {
+    display: none;
+  }
+
+  &.is-open {
+    display: block;
+  }
+
+  &[aria-hidden='false'] .video-modal-overlay {
+    animation: overlayIn 0.2s @easeInSine;
+  }
+
+  &[aria-hidden='false'] .video-modal-dialog {
+    animation: modalIn 0.3s @easeOutSine;
+  }
+
+  &[aria-hidden='true'] .video-modal-overlay {
+    animation: overlayOut 0.2s @easeOutSine;
+  }
+
+  &[aria-hidden='true'] .video-modal-dialog {
+    animation: modalOut 0.1s @easeInSine;
+  }
+}
+
+.video-modal-dialog,
+.video-modal-overlay {
+  will-change: transform;
+}
+
+.video-modal-overlay {
+  position: fixed;
+  z-index: @zindex-modal-background; // above the admin-toolbar
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // width: 100%;
+  // height: 100%;
+  background: fade(@black, 85%);
+}
+
+.video-modal-dialog {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-modal-content {
+  width: 100%;
+  max-width: 1000px;
+  padding: var(--gutter);
+
+  // in landscape mode for smaller devices, make sure the video
+  // fits the height of the screen
+  // see: // https://stackoverflow.com/a/20593342
+  @media (max-width: 980px) and (orientation: landscape) {
+    padding: unset;
+    aspect-ratio: unset;
+    max-height: 90vh;
+    max-width: 160vh;
+    width: 80vw; // 80% of viewport vidth
+    height: calc(9vw / 16vw * 80%); // 9/16 * 80%
+  }
+
+  figcaption {
+    .visually-hidden();
+  }
+}
+
+.video-modal-close {
+  border: 0;
+  cursor: pointer;
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  top: calc(var(--gutter) / 2);
+  right: calc(var(--gutter) / 2);
+  background-color: transparent;
+  background-image: svg-load(
+    '@fortawesome/fontawesome-free/svgs/solid/xmark.svg',
+    fill= @white
+  );
+  background-position: center;
+  background-size: contain;
+
+  &:hover,
+  &:focus {
+    // background-image: svg-load('close.svg', fill= @white);
+  }
+
+  &:focus-visible {
+    // .focus-outline(@white);
+  }
+}
+
+// ANIMATION
+
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes modalOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
+  }
+}

@@ -1,0 +1,15 @@
+{{ attach_library('b2b/page-wrapper') }}
+
+{%
+  set config = [
+    'page-wrapper',
+		is_front ? "path-frontpage"
+  ]
+%}
+
+<div{{ attributes.setAttribute('class', config) }}>
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>
+

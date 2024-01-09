@@ -1,0 +1,38 @@
+@import 'open-color/open-color.less';
+
+.tabs {
+  .tabs.primary {
+    display: grid;
+    background-color: var(--gin-color-text-light);
+    text-align: center;
+    display: flex;
+
+    &,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 500;
+      color: @white;
+      background-color: var(--gin-color-text);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background-color: var(--gin-color-focus);
+      }
+
+      &.is-active {
+        background-color: var(--gin-color-primary-active);
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+  }
+}

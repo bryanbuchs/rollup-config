@@ -1,0 +1,68 @@
+.nav-social {
+  // style stuff
+
+  ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  a {
+    .hide-text();
+    display: block;
+    width: 34px;
+    height: 34px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  // loading SVGs from the fontawesome package
+  // Icons are black by default. On :hover/:focus, use a CSS filter
+  // to apply a color so we don't have to embed the SVG twice.
+  // See: https://angel-rs.github.io/css-color-filter-generator/
+
+  .facebook {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/brands/facebook.svg',
+      fill= @black
+    );
+
+    &:is(:hover, :focus) {
+      filter: brightness(0) saturate(100%) invert(32%) sepia(13%)
+        saturate(2978%) hue-rotate(185deg) brightness(94%) contrast(86%);
+    }
+  }
+  .twitter {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/brands/x-twitter.svg',
+      fill= @black
+    );
+    &:is(:hover, :focus) {
+      filter: brightness(0) saturate(100%) invert(48%) sepia(90%)
+        saturate(2518%) hue-rotate(181deg) brightness(105%) contrast(90%);
+    }
+  }
+  .youtube {
+    // just slightly larger
+    width: 38px;
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/brands/youtube.svg',
+      fill= @black
+    );
+
+    &:is(:hover, :focus) {
+      filter: brightness(0) saturate(100%) invert(12%) sepia(62%)
+        saturate(6757%) hue-rotate(357deg) brightness(102%) contrast(81%);
+    }
+  }
+  .linkedin {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg',
+      fill= @black
+    );
+
+    &:is(:hover, :focus) {
+      filter: brightness(0) saturate(100%) invert(24%) sepia(94%)
+        saturate(1789%) hue-rotate(196deg) brightness(97%) contrast(92%);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+/*
+ * These are rules for styling the text INSIDE the CKeditor, not
+ * the output for the site. CKEditor is no longer an iFrame, so
+ * it picks up rules from the admin theme. This file resets the
+ * ck-content container to the theme defaults, and then applies
+ * some overrides to account for wysiwyg-specific markup & classes.
+ */
+
+@import (reference) '../global-typography/base.less';
+@import (reference) '../paragraph-text/paragraph-text.less';
+@import (reference) '../media-video/media-video.less';
+
+.ck.ck-content:extend(body all) {
+  // sanitize rules should only be set in ck-content, not the admin page
+  @import (less) 'sanitize.css/sanitize.css';
+  @import (less) 'sanitize.css/assets.css';
+
+  @import '../global/css-variables.less';
+  @import '../global-typography/global-typography.less';
+
+  // ".button" is a classname also used by the Gin theme, need to undo some styles:
+  @import '../button/button.less';
+  .ck-link_selected.button {
+    background-color: @spirited-adjusted;
+  }
+  .button {
+    border: unset !important;
+  }
+}
+
+.ck.ck-content:extend(.paragraph-text all) {
+}
+
+.ck.ck-content {
+  .drupal-media [data-drupal-media-preview='ready'] .media.align-right,
+  .drupal-media [data-drupal-media-preview='ready'] .media.align-left {
+    width: 100%;
+    margin: 0;
+    .disable-selection();
+  }
+
+  .drupal-media .media-video {
+    button[data-video-modal]:extend(.media-video.view-mode--default button[data-video-modal] all) {
+      .button-reset(block);
+      .disable-selection();
+    }
+    .video-modal {
+      display: none;
+    }
+  }
+}

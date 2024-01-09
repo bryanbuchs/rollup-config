@@ -1,0 +1,16 @@
+{{ attach_library('b2b/paragraph-video') }}
+
+{%
+  set config = [
+    'layout-grid-fullbleed',
+		'paragraph',
+    'paragraph-video',
+		'view-mode--hero',
+  ]
+%}
+
+<section{{attributes.setAttribute('class',config)}}>
+
+  {{ media }}
+
+</section>

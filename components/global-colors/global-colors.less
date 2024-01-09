@@ -1,0 +1,62 @@
+.global-colors {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+  & + .global-colors {
+    margin-top: 30px;
+  }
+
+  &,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .color {
+    aspect-ratio: @ratio-golden;
+    box-shadow: @shadow-elevation-medium;
+  }
+
+  code {
+    font-size: 14px;
+  }
+
+  @colors: {
+    archway: @archway;
+    bay: @bay;
+    black: @black;
+    brick: @brick;
+    cardinal-dark: @cardinal-dark;
+    cardinal-red: @cardinal-red;
+    dark-digital-blue: @dark-digital-blue;
+    digital-blue-link: @digital-blue-link;
+    fog-dark: @fog-dark;
+    fog-light: @fog-light;
+    fog: @fog;
+    illuminating-light: @illuminating-light;
+    illuminating: @illuminating;
+    lagunita: @lagunita;
+    olive-dark: @olive-dark;
+    olive: @olive;
+    palo-alto: @palo-alto;
+    palo-verde: @palo-verde;
+    plum: @plum;
+    poppy: @poppy;
+    sky: @sky;
+
+    spirited: @spirited;
+    spirited-dark: @spirited-dark;
+    spirited-adjusted: @spirited-adjusted;
+    stone-dark: @stone-dark;
+    stone-light: @stone-light;
+    stone: @stone;
+  };
+
+  each(@colors, {
+    .@{key} {
+      background: @value;
+    }
+  });
+}

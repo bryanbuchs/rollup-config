@@ -1,0 +1,41 @@
+.region-footer {
+  background-color: @fog-75;
+
+  .layout-grid-wide {
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    display: grid;
+    grid-template-columns: 180px 5fr auto;
+    gap: 3rem;
+
+    @media @layout-mobile {
+      gap: 2rem;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .branding {
+    h1 {
+      font-size: 19px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .nav-footer {
+    margin-top: var(--spacing);
+
+    @media @layout-mobile {
+      display: none;
+    }
+  }
+  .nav-social {
+    margin-top: var(--spacing);
+
+    @media @layout-mobile {
+      margin-top: 0;
+      margin-inline: auto;
+    }
+  }
+}

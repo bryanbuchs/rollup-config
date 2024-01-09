@@ -1,0 +1,46 @@
+/* see - https://ryanmulligan.dev/blog/layout-breakouts/ */
+
+.layout-grid {
+  --layout-grid-main: 780px;
+  --layout-grid-popout: 1200px;
+  --layout-grid-wide: 1600px;
+
+  --popout: calc((var(--layout-grid-popout) - var(--layout-grid-main)) / 2);
+  --wide: calc((var(--layout-grid-wide) - var(--layout-grid-popout)) / 2);
+
+  display: grid;
+  align-content: start;
+  grid-row-gap: var(--spacing);
+  grid-template-columns:
+    [layout-grid-fullbleed-start] minmax(var(--gutter), 1fr)
+    [layout-grid-wide-start] minmax(0, var(--wide))
+    [layout-grid-popout-start] minmax(0, var(--popout))
+    [layout-grid-text-start] min(
+      100% - (var(--gutter) * 2),
+      var(--layout-grid-main)
+    ) [layout-grid-text-end]
+    minmax(0, var(--popout)) [layout-grid-popout-end]
+    minmax(0, var(--wide)) [layout-grid-wide-end]
+    minmax(var(--gutter), 1fr) [layout-grid-fullbleed-end];
+}
+
+/* default column is "fullbleed" */
+.layout-grid > :not([class*=layout-grid]) {
+  grid-column: layout-grid-fullbleed;
+}
+
+.layout-grid-fullbleed {
+  grid-column: layout-grid-fullbleed;
+}
+
+.layout-grid-popout {
+  grid-column: layout-grid-popout;
+}
+
+.layout-grid-wide {
+  grid-column: layout-grid-wide;
+}
+
+.layout-grid-text {
+  grid-column: layout-grid-text;
+}

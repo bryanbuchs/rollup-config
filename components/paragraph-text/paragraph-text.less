@@ -1,0 +1,46 @@
+.paragraph-text {
+  // max-width: 1200px;
+  // margin-inline: auto;
+
+  // 1000
+  // 780
+
+  > * {
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  h2,
+  h3,
+  h4 {
+    text-align: center;
+    max-width: unset;
+  }
+
+  .is-wide {
+    font-size: 28px;
+    line-height: 1.4;
+    max-width: unset;
+  }
+
+  .media {
+    margin-inline: auto;
+  }
+
+  @media @layout-desktop {
+    .media.align-left,
+    .media.align-right {
+      width: 40%;
+    }
+
+    .media.align-left {
+      float: left;
+      margin-inline: 0 2rem;
+    }
+
+    .media.align-right {
+      float: right;
+      margin-inline: 2rem 0;
+    }
+  }
+}

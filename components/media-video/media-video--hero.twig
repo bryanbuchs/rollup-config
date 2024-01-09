@@ -1,0 +1,22 @@
+{{ attach_library('b2b/media-video') }}
+
+{%
+  set config = [
+    'media-video',
+    'media',
+    'view-mode--hero'
+  ]
+%}
+
+<figure{{attributes.addClass(classes,config)}}>
+
+  {{ video }}
+
+  {# optional title #}
+  {% if title %}
+    <figcaption>
+      <p>{{ title }}</p>
+    </figcaption>
+  {% endif %}
+
+</figure>

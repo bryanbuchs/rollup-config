@@ -1,0 +1,21 @@
+// moved the html/body base rule here so we can import the
+// selectors that target actual text independently in the
+// wysiwyg library
+
+html,
+body {
+  font-family: @sans;
+  font-size: 20px;
+  line-height: 1.5;
+  color: @black;
+
+  @media @layout-mobile {
+    font-size: 18px;
+  }
+}
+
+// undo a rule from sanitize.css
+:where(nav li):before {
+  content: unset;
+  float: unset;
+}

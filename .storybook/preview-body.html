@@ -1,0 +1,18 @@
+<script>
+  const drupalSettings = {
+    site: {
+      name: 'Stanford Enterprise Education for Transformation',
+      slogan: 'Powered by Stanford Center for Professional Development',
+    },
+    marketo: {
+      key: '194-OCQ-487'
+    },
+    baseUrl: 'LINK',
+    insertSelector: '#storybook-root'
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    Drupal.attachBehaviors(document.querySelector('#storybook-root'), drupalSettings)
+  })
+</script>
+
+<script src="//app-ab15.marketo.com/js/forms2/js/forms2.min.js"></script>

@@ -1,0 +1,18 @@
+{{ attach_library('b2b/region-footer') }}
+
+{% set config = [
+    'region',
+		'region-footer',
+    'layout-grid-fullbleed',
+    'layout-grid',
+	] %}
+
+<footer{{ attributes.addClass(config) }}>
+  <div class="layout-grid-wide">
+    {% block content %}
+      {{ branding }}
+      {{ footer }}
+      {{ social }}
+    {% endblock content %}
+  </div>
+</footer>

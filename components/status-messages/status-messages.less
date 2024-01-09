@@ -1,0 +1,80 @@
+/**
+ * @file
+ * Styles for system messages.
+ */
+@import 'open-color/open-color.less';
+
+.messages {
+  padding: 0.75rem 1rem; /* LTR */
+  word-wrap: break-word;
+  border: 1px solid;
+  border-width: 1px 1px 1px 0.5rem; /* LTR */
+  border-radius: 0;
+  overflow-wrap: break-word;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 18px;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-position: center;
+    background-size: contain;
+    flex: 0 0 auto;
+  }
+}
+
+.messages__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.messages__item {
+  margin: 0;
+}
+.messages__item + .messages__item {
+  margin-top: 0.5rem;
+}
+
+.messages--status {
+  color: @oc-green-9;
+  border-color: @oc-green-9;
+  background-color: @oc-green-0;
+
+  &:after {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/circle-check.svg',
+      fill= @oc-green-9
+    );
+  }
+}
+
+.messages--warning {
+  color: @oc-yellow-9;
+  border-color: @oc-yellow-9;
+  background-color: @oc-yellow-0;
+
+  &:after {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/triangle-exclamation.svg',
+      fill= @oc-yellow-9
+    );
+  }
+}
+
+.messages--error {
+  color: @oc-red-9;
+  border-color: @oc-red-9;
+  background-color: @oc-red-0;
+
+  &:after {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/bug.svg',
+      fill= @oc-red-9
+    );
+  }
+}

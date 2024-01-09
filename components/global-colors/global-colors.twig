@@ -1,0 +1,8 @@
+<ul class="global-colors">
+  {% for color in colors %}
+    <li>
+      <div class="color {{ color }}"></div>
+      <code>@{{ color }}</code>
+    </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,97 @@
+.entity-challenge {
+  border-radius: 5px;
+  background-position: center;
+  background-size: 115% auto;
+  width: 360px;
+  padding: 40px;
+
+  @media @layout-small {
+    width: 240px;
+    padding: 25px;
+  }
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "content";
+
+  &:before {
+    content:"";
+    display: block;
+    aspect-ratio: 1 / 1;
+    grid-area: content;
+    z-index: 1;
+  }
+
+  .content {
+    grid-area: content;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 30px;
+    line-height: 1.3;
+
+    a {
+      text-decoration: none;
+
+      &:hover,&:focus {
+        text-decoration: underline;
+      }
+    }
+
+    @media @layout-small {
+      font-size: 20px;
+    }
+  }
+
+
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+
+    @media @layout-small {
+      font-size: 16px;
+    }
+  }
+
+  // 'sitemap', 'user-group', 'circle-question', 'people-arrows', 'bolt'
+  &.icon-sitemap {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/sitemap.svg',
+      fill=fade(@white, 15%)
+    );
+  }
+  &.icon-user-group {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/user-group.svg',
+      fill= fade(@white, 15%)
+    );
+  }
+  &.icon-circle-question {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/circle-question.svg',
+      fill= fade(@white, 15%)
+    );
+  }
+  &.icon-people-arrows {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/people-arrows.svg',
+      fill= fade(@white, 15%)
+    );
+  }
+  &.icon-bolt {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/bolt.svg',
+      fill= fade(@white, 15%)
+    );
+  }
+}

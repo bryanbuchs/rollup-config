@@ -1,0 +1,8 @@
+<ul class="global-themes">
+  {% for theme in themes %}
+    <li>
+      <div class="theme {{ 'theme-' ~ theme }}"></div>
+      <code>.{{ 'theme-' ~ theme }}</code>
+    </li>
+  {% endfor %}
+</ul>

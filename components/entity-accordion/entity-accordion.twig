@@ -1,0 +1,61 @@
+{{ attach_library('b2b/gsap') }}
+{{ attach_library('b2b/entity-accordion') }}
+
+{% set config = [
+    'entity-accordion',
+    'entity',
+  ] %}
+
+<article{{attributes.setAttribute('class',config)}}>
+  <h3>
+    <button
+      class="trigger" id="{{ "accordion-header-" ~ id }}" aria-expanded="false" aria-controls="{{ "accordion-panel-" ~ id }}">
+      {# @TODO: could this be added to the dom elsewhere and `use:` here? #}
+      <svg aria-hidden="true" viewbox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="24"/>
+        <rect x="12" y="23.2" width="24" height="3.2"/>
+        <rect class="vertical" x="22.4" y="12.8" width="3.2" height="24"/>
+      </svg>
+      <span>{{ heading|typography }}</span>
+    </button>
+  </h3>
+  <div class="content" id="{{ "accordion-panel-" ~ id }}" aria-labelledby="{{ "accordion-header-" ~ id }}">
+    <div class="wrapper">
+      {% block content %}
+
+        {{ mock.left }}
+
+        <p>
+          Do ut dolore non quis sit irure cillum veniam anim eu proident occaecat
+                    magna. Eiusmod sint eu fugiat dolore excepteur incididunt non cillum nisi
+                    reprehenderit veniam sunt nostrud. Duis in cupidatat veniam amet commodo
+                    nulla do enim ex id. Elit fugiat nostrud ut enim laboris in est. Labore ea
+                    ullamco qui mollit aliquip eu. Magna anim magna irure Lorem culpa ut officia.
+                    Sunt proident anim tempor non culpa nulla aliquip aliquip velit in deserunt.
+                    Elit anim exercitation quis occaecat adipisicing. Dolor magna fugiat aute
+                    occaecat quis deserunt magna excepteur aute sit dolor veniam nostrud. Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Libero maiores eveniet
+                    voluptatem nobis ipsam sapiente soluta, numquam corporis possimus? Ad nihil
+                    quos modi assumenda cumque quae minima veniam enim incidunt.
+        </p>
+
+        {{ mock.right }}
+
+        <p>
+          Do ut dolore non quis sit irure cillum veniam anim eu proident occaecat
+                    magna. Eiusmod sint eu fugiat dolore excepteur incididunt non cillum nisi
+                    reprehenderit veniam sunt nostrud. Duis in cupidatat veniam amet commodo
+                    nulla do enim ex id. Elit fugiat nostrud ut enim laboris in est. Labore ea
+                    ullamco qui mollit aliquip eu. Magna anim magna irure Lorem culpa ut officia.
+                    Sunt proident anim tempor non culpa nulla aliquip aliquip velit in deserunt.
+                    Elit anim exercitation quis occaecat adipisicing. Dolor magna fugiat aute
+                    occaecat quis deserunt magna excepteur aute sit dolor veniam nostrud. Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Libero maiores eveniet
+                    voluptatem nobis ipsam sapiente soluta, numquam corporis possimus? Ad nihil
+                    quos modi assumenda cumque quae minima veniam enim incidunt.
+        </p>
+
+      {% endblock %}
+    </div>
+  </div>
+</article>

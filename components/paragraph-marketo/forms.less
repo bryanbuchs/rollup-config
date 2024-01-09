@@ -1,0 +1,211 @@
+form {
+  font-family: inherit !important;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type='search'] {
+  appearance: textfield;
+  box-sizing: content-box;
+}
+
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration {
+  appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+label {
+  font-size: 18px;
+  color: #585752;
+}
+
+input[type='text'],
+textarea {
+  background-color: #f4f4f4;
+  border: 1px solid #ebeae6;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.js input.form-autocomplete {
+  background-image: none;
+}
+
+// MARKETO OVERRIDES
+
+.mktoForm {
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: inherit !important;
+  color: inherit !important;
+
+  .mktoOffset {
+    display: none;
+  }
+
+  label {
+    margin-bottom: 0.3em !important;
+    color: @black !important;
+    line-height: 1.4em !important;
+    font-size: 18px;
+  }
+
+  .mktoRequiredField label.mktoLabel {
+    font-weight: @semibold !important;
+  }
+
+  input[type='text'],
+  input[type='url'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  input[type='date'],
+  textarea {
+    width: 100% !important;
+    line-height: 1.4 !important;
+    padding: 10px !important;
+    background-color: @fog-light !important;
+    border: 1px solid @fog-dark !important;
+    font-size: 18px;
+  }
+
+  input[type='checkbox'] {
+    line-height: 1.4 !important;
+    margin-top: 5px !important;
+  }
+
+  select {
+    width: 100% !important;
+    line-height: 1.4 !important;
+    padding: 3px !important;
+  }
+
+  .mktoFormRow,
+  .mktoFieldWrap,
+  .mktoFormCol,
+  .mktoButtonRow,
+  .mktoLogicalField,
+  .mktoHtmlText {
+    width: 100% !important;
+  }
+
+  label {
+    width: auto !important;
+  }
+
+  .mktoHtmlText {
+    font-size: 16px;
+  }
+
+  .mktoButtonRow {
+    text-align: center !important;
+  }
+  .mktoButtonWrap {
+    margin-left: 0 !important;
+  }
+
+  button,
+  .mktoButtonWrap .mktoButton {
+    background-color: @spirited-adjusted !important;
+    font-family: inherit !important;
+    font-size: 20px !important;
+    font-weight: @semibold !important;
+    box-shadow: 0 1px 10px 1px fade(@black, 20%);
+    width: 100% !important;
+    max-width: 280px !important;
+    padding: 16px 30px !important;
+    margin-top: 2em !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+
+    &:hover {
+      background-color: @spirited !important;
+      background-image: none !important;
+    }
+  }
+
+  .mktoAsterix {
+    display: inline;
+    width: auto;
+  }
+
+  .mktoError .mktoErrorMsg,
+  .mktoError .mktoErrorArrow {
+    background-image: none !important;
+    background-color: @spirited !important;
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 9px 7px, inset transparent 0 0 0 !important;
+  }
+}

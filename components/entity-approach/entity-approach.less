@@ -1,0 +1,216 @@
+.entity-approach {
+  // ** LAYOUT RULES **
+  // ------------------
+  // [article:1480] = [text:600] [space:80] [media:800]
+
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-rows: auto 1fr;
+
+  --content-width: 45.5%;
+
+  @media @layout-desktop {
+    &:where(.align-left) {
+      grid-template-columns: var(--content-width) 1fr;
+      grid-template-areas:
+        'heading media'
+        'content media';
+      .heading,
+      .content {
+        padding-right: var(--gutter);
+      }
+    }
+
+    &:where(.align-right) {
+      grid-template-columns: 1fr var(--content-width);
+      grid-template-areas:
+        'media heading'
+        'media content';
+      .heading,
+      .content {
+        padding-left: var(--gutter);
+      }
+    }
+  }
+
+  // place and align blocks
+  .heading {
+    grid-area: heading;
+  }
+  .content {
+    grid-area: content;
+    align-self: self-start;
+  }
+
+  .media {
+    grid-area: media;
+    align-self: self-start;
+  }
+
+  @media @layout-small {
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+    grid-row-gap: 1rem;
+    grid-template-areas:
+      'heading'
+      'media'
+      'content';
+  }
+
+  // figure/figcaption: "800px" = offset:100 image:620 space:80
+  --caption-offset: 12%;
+  --caption-overlap: 8%;
+
+  @media @layout-desktop {
+    .media {
+      display: grid;
+      grid-template-columns: var(--caption-offset) 1fr var(--caption-overlap);
+      grid-template-rows: auto auto 1fr;
+
+      // this shim adds an implicit height to the "overlap" row so that
+      // the row auto height has something to base "auto" on. it's an
+      // empty block filling the last column
+      &:after {
+        content: '';
+        display: block;
+        grid-column: 3;
+        grid-row: 2;
+        // to adjust the vertical overlap, use the second ratio value
+        aspect-ratio: 1 / 1.25;
+      }
+
+      img {
+        grid-column: 2 / span 2;
+        grid-row: 1 / span 2;
+      }
+
+      figcaption {
+        grid-column: 1 / span 2;
+        grid-row: 2 / span 2;
+      }
+    }
+
+    &.align-right {
+      .media {
+        grid-template-columns: var(--caption-overlap) 1fr var(--caption-offset);
+
+        &:after {
+          grid-column: 1;
+        }
+        img {
+          grid-column: 1 / span 2;
+        }
+        figcaption {
+          grid-column: 2 / span 2;
+        }
+      }
+    }
+  }
+
+  // ** STYLE RULES **
+  // ------------------
+  .content {
+    font-size: 24px;
+    line-height: 1.4;
+
+    @media @layout-small {
+      font-size: 20px;
+    }
+  }
+
+  .media {
+    figcaption {
+      margin: 0;
+      padding: var(--gutter);
+      background-color: @white;
+      font-size: 30px;
+      font-style: italic;
+      line-height: 1.4;
+      text-align: left;
+      text-wrap: balance;
+
+      @media @layout-small {
+        font-size: 22px;
+      }
+
+      @media @layout-desktop {
+        background: fade(@white, 95%);
+        box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+
+  // hgroup "1 -The Business of Transformation"
+  .heading {
+    // ** LAYOUT RULES **
+    // ------------------
+    h3 {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        'step primary'
+        'step secondary';
+      align-items: center;
+    }
+
+    em {
+      // "1"
+      grid-area: step;
+      align-self: center;
+    }
+
+    strong {
+      // "The Business"
+      grid-area: primary;
+      align-self: self-end;
+    }
+
+    // "of Transformation"
+    span {
+      grid-area: secondary;
+      align-self: self-start;
+    }
+
+    // ** STYLE RULES **
+    // ------------------
+    h3 {
+      font-size: 30px;
+      line-height: 1.4;
+    }
+
+    // "1"
+    em {
+      color: @spirited-adjusted;
+      font-size: 240px;
+      font-style: normal;
+      line-height: 1;
+      width: 1.1ch;
+      // letter-spacing: 4.8px;
+
+      @media @layout-small {
+        font-size: 72px;
+        // letter-spacing: 1.44px;
+      }
+    }
+
+    // "The Business"
+    strong {
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.3; // 52px
+      text-transform: uppercase;
+
+      @media @layout-small {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+
+    // "of Transformation"
+    span {
+      @media @layout-small {
+        font-size: 24px;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{{ attach_library('b2b/paragraph-scrollable') }}
+{{ attach_library('b2b/gsap') }}
+{{ attach_library('b2b/gsap-scrolltrigger') }}
+
+{%
+  set config = [
+      'layout-grid-fullbleed',
+      'paragraph',
+      'paragraph-scrollable',
+    ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+
+  {% if heading %}
+    <h2>{{ heading|typography }}</h2>
+  {% endif %}
+
+  <div class="scrollable-container" tabindex="0">
+    <div class="scrollable-container-items">
+      <ul class="rows">
+        {% for row in rows %}
+          <li>
+            {{ row }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</section>

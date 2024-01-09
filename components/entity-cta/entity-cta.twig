@@ -1,0 +1,29 @@
+{{ attach_library('b2b/entity-cta') }}
+
+{% set config = [
+    'entity-cta',
+    'theme-' ~ theme
+  ] %}
+
+<article{{ attributes.setAttribute('class',config) }}>
+
+  <div class="content">
+
+    <h3>{{ heading|typography }}</h3>
+
+    <div class="text">
+      {{ text }}
+    </div>
+
+    <p class="footer">
+      {% include "@components/action/action.twig" with {
+        url: url,
+        label: label,
+      } only %}
+    </p>
+
+  </div>
+
+  {{ image }}
+
+</article>

@@ -1,0 +1,8 @@
+<p class="media-document">
+	{% include "@components/button/button.twig" with {
+		label: label,
+		icon: 'document',
+		link: link,
+		attributes: attributes.setAttribute('target','_blank')
+	} only %}
+</p>

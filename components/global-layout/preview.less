@@ -1,0 +1,44 @@
+// preview styles for page-wrapper
+:where(.preview) {
+  pre {
+    padding: 1rem;
+    margin: 0;
+    background-color: @fog-light;
+  }
+
+  pre + p {
+    margin-inline: 1rem;
+  }
+
+  .region-header pre {
+    background-color: @stone;
+    color: @white;
+  }
+
+  .region-content {
+    background-color: @white;
+  }
+
+  .region-footer pre {
+    background-color: @cardinal-red;
+    color: @white;
+  }
+
+  .layout-grid-text pre {
+    background: @fog;
+  }
+
+  .layout-grid-popout pre {
+    background-color: @poppy;
+  }
+
+  .layout-grid-wide pre {
+    background-color: @illuminating;
+  }
+
+  .layout-grid-fullbleed pre {
+    background-color: @stone-dark;
+    color: @white;
+    border-radius: 0;
+  }
+}

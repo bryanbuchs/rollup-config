@@ -1,0 +1,35 @@
+.paragraph-approach {
+  background-color: #edebe5;
+  padding: var(--spacing) 0;
+
+  --heading: 44px;
+
+  @media @layout-small {
+    --heading: 28px;
+  }
+
+  @media @layout-medium {
+    // --heading: ??;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: var(--heading);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-inline: var(--gutter);
+    margin-bottom: var(--spacing);
+    text-wrap: balance;
+  }
+
+  .entity-approach {
+    margin-bottom: var(--spacing);
+    grid-column: layout-grid-wide;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

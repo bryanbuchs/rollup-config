@@ -1,0 +1,126 @@
+.block-intro {
+  aspect-ratio: 1600 / 760;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--gutter);
+  background-color: @black;
+
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: var(--gutter);
+    max-width: 1000px;
+    color: @white;
+    font-size: 36px;
+  }
+
+  // override the global-theme rules -- overlay is semi-translucent
+  &.theme-olive .content {
+    background-color: fade(@olive-dark, 75%);
+
+    @media @layout-small {
+      background-color: @olive-dark;
+    }
+  }
+  &.theme-plum .content {
+    background-color: fade(@plum, 75%);
+
+    @media @layout-small {
+      background-color: @plum;
+    }
+  }
+
+  &.theme-lagunita .content {
+    background-color: fade(@lagunita, 75%);
+
+    @media @layout-small {
+      background-color: @lagunita;
+    }
+  }
+
+  p {
+    font-style: normal;
+    line-height: 1.4;
+    text-wrap: balance;
+
+    // full first line: "Empower your Enterprise"
+    .first-line {
+      display: block;
+
+      // "In the animated text on hero image, the first line with
+      //  the animated word should be a larger font size than the
+      //  rest of the paragraph so it stands out"
+      font-size: 125%;
+    }
+
+    // container for the animated words
+    .wrapper {
+      display: inline-block;
+      position: relative;
+      width: 10ch;
+
+      // shim to add a height to the container
+      &:after {
+        content: ' ';
+        display: inline-block;
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    // replaceable word: "Enterprise",...
+    strong {
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    max-width: none;
+
+    @media @layout-desktop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+  }
+
+  @media @layout-small {
+    padding: 0;
+    flex-direction: column-reverse;
+    justify-content: unset;
+    align-items: unset;
+
+    p {
+      font-size: 22px;
+      line-height: 130%; /* 28.6px */
+      letter-spacing: 0.44px;
+    }
+
+    img {
+      aspect-ratio: 400 / 240;
+    }
+  }
+}
+
+
+
+.block-intro .content {
+  display: block;
+}
+
+.js .block-intro .content {
+  display: none;
+}
+
+.js .block-intro.is-loaded .content {
+  display: block;
+}

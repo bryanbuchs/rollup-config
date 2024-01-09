@@ -1,0 +1,114 @@
+@import (reference) '../paragraph-text/paragraph-text.less';
+
+.entity-accordion {
+  // style stuff
+
+  --icon-size: 48px;
+  --icon-gap: 18px;
+  --button-padding: 12px;
+  --button-text: 24px;
+
+  @media @layout-medium {
+    --icon-size: 40px;
+    --button-padding: 12px;
+    --button-text: 21px;
+  }
+
+  @media @layout-small {
+    --icon-size: 32px;
+    --icon-gap: 16px;
+    --button-padding: 12px;
+    --button-text: 18px;
+  }
+
+  & + .entity-accordion {
+    margin-top: 1rem;
+  }
+
+  h3 {
+    margin: 0;
+    // text-wrap: initial;
+  }
+
+  button {
+    .button-reset(inline-flex);
+    gap: var(--icon-gap);
+
+    width: 100%;
+    color: @black;
+    font-size: var(--button-text);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: var(--button-padding);
+    border-radius: 5px;
+    background-color: tint(@fog, 50%);
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.2);
+
+    .tween(@transition-property: background-color; @transition-duration: 0.15s);
+
+    span {
+      align-self: center;
+    }
+
+    // using an inline SVG instead of a CSS background so we can tween the
+    // parts of the SVG (`+` to `-`, fill colors) instead of replacing the
+    // icon wholesale
+
+    svg {
+      align-self: flex-start;
+      flex: 0 0 auto;
+
+      width: var(--icon-size);
+      aspect-ratio: 1 / 1;
+
+      circle {
+        fill: @spirited;
+        .tween(@transition-property: fill; @transition-duration: 0.15s);
+      }
+
+      rect {
+        fill: @white;
+        .tween(@transition-property: fill, opacity; @transition-duration: 0.15s);
+      }
+    }
+
+    &[aria-expanded='true'] {
+      background-color: @plum;
+      color: @fog-light;
+
+      svg {
+        circle {
+          fill: @white;
+        }
+        rect {
+          fill: @plum;
+        }
+        .vertical {
+          visibility: hidden;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .content {
+    height: 0;
+    overflow: hidden;
+    padding-inline: calc(
+      var(--button-padding) + var(--icon-size) + var(--icon-gap)
+    );
+
+    @media @layout-tiny {
+      padding-inline: 0;
+    }
+  }
+
+  .wrapper:extend(.paragraph-text all) {
+    margin-top: 1rem;
+
+    > .media:first-child + p {
+      padding-top: 1.5rem;
+    }
+  }
+}

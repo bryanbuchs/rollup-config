@@ -1,0 +1,26 @@
+{{ attach_library('b2b/region-content') }}
+
+{#
+  {%
+    set config = [
+      'region',
+      'region-content',
+      'layout-grid'
+    ]
+  %}
+  <div{{ attributes.addClass(classes, config) }}>
+#}
+
+<main role="main" id="main-content" tabindex="-1" class="region region-content layout-grid">
+  {% block content %}
+    <pre class="preview">block</pre>
+    <pre class="preview">page-title</pre>
+    <article class="node--view-mode-full layout-grid layout-grid-fullbleed">
+      <pre class="preview layout-grid-text">paragraph</pre>
+      <pre class="preview layout-grid-popout">paragraph</pre>
+      <pre class="preview layout-grid-wide">paragraph</pre>
+      <pre class="preview layout-grid-fullbleed">paragraph</pre>
+    </article>
+  {% endblock %}
+</main>
+

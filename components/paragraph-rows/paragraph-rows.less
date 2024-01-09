@@ -1,0 +1,27 @@
+.paragraph-rows {
+  background-color: tint(@stone-light, 75%);
+  padding-block: var(--gutter);
+
+  h2 {
+    text-align: center;
+    margin-bottom: var(--gutter);
+  }
+
+  .rows {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li + li {
+      margin-top: var(--gutter);
+      border-top: 1px solid @fog;
+      padding-top: var(--gutter);
+    }
+
+    @media @layout-desktop {
+      li:nth-child(even) .entity-row .layout-grid-wide {
+        grid-template-areas: 'image content';
+      }
+    }
+  }
+}

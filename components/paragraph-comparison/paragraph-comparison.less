@@ -1,0 +1,175 @@
+.paragraph-comparison {
+  // local variables
+  @background: tint(@fog, 50%);
+  @a11y-green: #6d7836;
+
+  background-color: @background;
+  text-align: center;
+  padding-block: var(--spacing);
+
+  table {
+    line-height: 1.1;
+    font-size: 24px;
+    width: 100%;
+
+    th,
+    td {
+      padding: 1rem 1rem;
+      border: 1px solid @background;
+    }
+
+    thead {
+      th {
+        color: @white;
+        font-size: 32px;
+        font-weight: 600;
+
+        &.customized {
+          background-color: @plum;
+        }
+        &.curated {
+          background-color: @a11y-green;
+        }
+        &.integrated {
+          background-color: @lagunita;
+        }
+      }
+    }
+    tbody {
+      th {
+        color: @white;
+        background-color: @black;
+        font-weight: 600;
+        max-width: max-content;
+      }
+      td {
+        width: 27%;
+        color: @black;
+
+        &.customized {
+          background-color: mix(@plum, @background, 10%);
+        }
+        &.curated {
+          background-color: mix(@olive, @background, 15%);
+        }
+        &.integrated {
+          background-color: mix(@sky, @background, 15%);
+        }
+      }
+
+      tr:nth-child(even) {
+        th {
+          background-color: mix(@black, @background, 80%);
+        }
+        td {
+          &.customized {
+            background-color: mix(@plum, @background, 5%);
+          }
+          &.curated {
+            background-color: mix(@olive, @background, 7%);
+          }
+          &.integrated {
+            background-color: mix(@sky, @background, 7%);
+          }
+        }
+      }
+    }
+  }
+
+  .card {
+    h3 {
+      color: @white;
+      font-size: 21px;
+      font-weight: 600;
+      padding: 10px 15px;
+      margin-bottom: 0;
+      margin-bottom: 1px;
+    }
+
+    dl {
+      display: grid;
+      gap: 1px;
+      text-align: left;
+      grid-template-columns: minmax(min-content, 40%) 1fr;
+    }
+
+    dt,
+    dd {
+      padding: 10px 15px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    dt {
+      color: @white;
+      background-color: @black;
+      font-weight: 600;
+
+      &:nth-of-type(even) {
+        background-color: mix(@black, @background, 80%);
+      }
+    }
+
+    &.customized {
+      h3 {
+        background-color: @plum;
+      }
+
+      dd {
+        background-color: mix(@plum, @background, 10%);
+
+        &:nth-of-type(even) {
+          background-color: mix(@plum, @background, 5%);
+        }
+      }
+    }
+
+    &.curated {
+      h3 {
+        background-color: @a11y-green;
+      }
+
+      dd {
+        background-color: mix(@olive, @background, 15%);
+
+        &:nth-of-type(even) {
+          background-color: mix(@olive, @background, 7%);
+        }
+      }
+    }
+
+    &.integrated {
+      h3 {
+        background-color: @lagunita;
+      }
+
+      dd {
+        background-color: mix(@sky, @background, 15%);
+
+        &:nth-of-type(even) {
+          background-color: mix(@sky, @background, 7%);
+        }
+      }
+    }
+  }
+
+
+
+
+  .cards {
+    display: none;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  @media @layout-small {
+    table {
+      display: none;
+    }
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+}

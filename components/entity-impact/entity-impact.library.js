@@ -1,0 +1,1 @@
+import './entity-impact.less'

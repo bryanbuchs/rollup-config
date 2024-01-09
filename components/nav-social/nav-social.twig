@@ -1,0 +1,20 @@
+{{ attach_library('b2b/nav-social') }}
+
+{% set config = [
+    'nav',
+    'nav-social',
+  ] %}
+
+<nav{{ attributes.setAttribute('class',config).setAttribute('aria-label',heading) }}>
+  {% block content %}
+    <ul>
+      {% for item in menu %}
+        <li>
+          <a href="{{ item.url }}" class="{{ item.class }}" target="_blank" rel="nofollow">
+            {{ item.text }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endblock %}
+</nav>

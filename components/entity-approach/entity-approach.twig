@@ -1,0 +1,37 @@
+{{ attach_library('b2b/entity-approach') }}
+
+{% set config = [
+    'entity-approach',
+		step is odd ? "align-left" : "align-right"
+  ] %}
+
+<article{{ attributes.setAttribute('class',config) }}>
+
+  <hgroup class="heading">
+    <h3>
+      <em>
+        {{ step }}
+      </em>
+      <strong>
+        {{ primary }}
+      </strong>
+      <span>
+        {{ secondary }}
+      </span>
+    </h3>
+  </hgroup>
+
+  <div class="content">
+    {{ text }}
+  </div>
+
+  <figure class="media media-image">
+    {{ image }}
+    {% if quote %}
+      <figcaption>
+        {{ quote }}
+      </figcaption>
+    {% endif %}
+  </figure>
+
+</article>

@@ -1,0 +1,22 @@
+{{ attach_library('b2b/media-image') }}
+
+{%
+  set config = [
+    'media-image',
+    'media',
+		'view-mode--' ~ view_mode,
+  ]
+%}
+
+<figure{{attributes.addClass(config)}}>
+	{% block content %}
+		{{ image }}
+	{% endblock %}
+
+	{# optional caption #}
+	{% if caption %}
+		<figcaption>
+			{{ caption }}
+		</figcaption>
+	{% endif %}
+</figure>

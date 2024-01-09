@@ -1,0 +1,21 @@
+{{ attach_library('b2b/paragraph-video') }}
+
+{%
+  set config = [
+    'layout-grid-wide',
+		'paragraph',
+    'paragraph-video',
+    'view-mode--default',
+		'align-' ~ align,
+  ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+
+  <div class="content {{ 'theme-' ~ theme }}">
+    {{ text }}
+  </div>
+
+  {{ media }}
+
+</section>

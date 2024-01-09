@@ -1,0 +1,28 @@
+{{ attach_library('b2b/local-tasks') }}
+
+<nav class="tabs layout-grid-wide" role="navigation" aria-label="Tabs">
+  {% block content %}
+    <h2 class="visually-hidden">Primary tabs</h2>
+    <ul class="tabs primary">
+      <li class="is-active">
+        <a href="LINK" class="is-active">View<span class="visually-hidden">(active tab)</span>
+        </a>
+      </li>
+      <li>
+        <a href="LINK">Edit</a>
+      </li>
+      <li>
+        <a href="LINK">Delete</a>
+      </li>
+      <li>
+        <a href="LINK">Revisions</a>
+      </li>
+      <li>
+        <a href="LINK">Clone</a>
+      </li>
+      <li>
+        <a href="LINK">Devel</a>
+      </li>
+    </ul>
+  {% endblock %}
+</nav>

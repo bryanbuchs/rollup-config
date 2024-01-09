@@ -1,0 +1,20 @@
+{{ attach_library('b2b/status-messages') }}
+
+<div class="layout-grid-wide" data-drupal-messages>
+  {% block messages %}
+    {%
+      set config = [
+        'layout-grid-wide',
+        'messages',
+        'messages--' ~ state
+      ]
+    %}
+    <div role="contentinfo" aria-label="Status message" {{attributes.setAttribute('class',config)}}>
+      <h2 class="visually-hidden">Status message</h2>
+      <ul class="messages__list">
+        <li class="messages__item">Lorem ipsum dolor sit amet consectetur</li>
+        <li class="messages__item">Odit, ipsa voluptatem nulla ullam</li>
+      </ul>
+    </div>
+  {% endblock %}
+</div>

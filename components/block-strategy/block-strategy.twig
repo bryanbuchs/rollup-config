@@ -1,0 +1,25 @@
+{{ attach_library('b2b/block-strategy') }}
+
+{%
+  set config = [
+		'block',
+    'block-strategy',
+		'layout-grid-wide'
+  ]
+%}
+
+<section{{attributes.addClass(config)}}>
+
+  <header class="header">
+    <h2>{{ heading|typography }}</h2>
+  </header>
+
+  <div class="content">{{ text }}</div>
+
+  {{ media }}
+
+  <footer class="footer">
+    {{ button }}
+  </footer>
+
+</section>

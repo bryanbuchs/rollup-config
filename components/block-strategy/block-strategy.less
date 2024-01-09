@@ -1,0 +1,125 @@
+// re-use the custom figcaption treatment from paragraph:video
+@import (reference) '../paragraph-video/paragraph-video.less';
+
+.block-strategy {
+  --overlap-x: 80px;
+
+  display: grid;
+  grid-template-columns: auto var(--overlap-x) auto;
+  grid-template-rows: 1fr auto auto;
+  grid-row-gap: var(--gutter);
+
+  @media @layout-small {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 0;
+    grid-template-areas:
+      'header'
+      'media'
+      'content'
+      'footer';
+  }
+
+  .header {
+    grid-area: header;
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--gutter);
+
+    @media @layout-desktop {
+      padding-top: var(
+        --gutter
+      ); // row gap causes uneven centering, compensate for that
+      grid-area: unset;
+      grid-column: 1;
+      grid-row: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  figure {
+    margin-bottom: 0;
+    grid-area: media;
+
+    @media @layout-desktop {
+      grid-area: unset;
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+
+    figcaption:extend(.paragraph-video.view-mode--default figcaption all) {}
+  }
+
+  .content {
+    grid-area: content;
+    display: flex;
+    align-items: center;
+    background: @lagunita;
+    padding: var(--gutter);
+
+    @media @layout-desktop {
+      grid-area: unset;
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 2;
+      padding-right: var(--overlap-x);
+    }
+  }
+
+  .footer {
+    grid-area: footer;
+
+    @media @layout-desktop {
+      grid-area: unset;
+      grid-column: 3;
+      grid-row: 3;
+      align-self: self-start;
+    }
+
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // contents
+
+  .header h2 {
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+    // max-width: 370px;
+
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+
+    @media @layout-small {
+      font-size: 28px;
+    }
+  }
+
+  .content p {
+    margin-right: var(--gutter);
+    color: @white;
+    font-size: 28px;
+    line-height: 1.5; /* 42px */
+
+    @media @layout-small {
+      font-size: 20px;
+      line-height: 1.4; /* 28px */
+    }
+  }
+
+  .footer .media-document {
+    margin: 0;
+
+    @media @layout-small {
+      margin-top: 1rem;
+    }
+  }
+}

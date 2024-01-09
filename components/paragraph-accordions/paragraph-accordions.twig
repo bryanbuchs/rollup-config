@@ -1,0 +1,21 @@
+{{ attach_library('b2b/paragraph-accordions') }}
+
+{%
+  set config = [
+    'layout-grid-popout',
+    'paragraph-accordions',
+    'paragraph',
+  ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+
+  {% if heading %}
+    <h2>{{ heading|typography }}</h2>
+  {% endif %}
+
+  {% for row in rows %}
+    {{ row }}
+  {% endfor %}
+
+</section>

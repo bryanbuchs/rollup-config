@@ -1,0 +1,21 @@
+.paragraph-accordions {
+  // style stuff
+  --heading: 44px;
+
+  @media @layout-small {
+    --heading: 28px;
+  }
+
+  @media @layout-medium {
+    // --heading: ??;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: var(--heading);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-inline: var(--gutter);
+  }
+
+}

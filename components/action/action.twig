@@ -1,0 +1,12 @@
+{{ attach_library('b2b/action') }}
+
+{% set attributes = create_attribute() %}
+
+{%
+  set config = [
+    'action',
+		theme ? 'theme-' ~ theme : null
+  ]
+%}
+
+<a{{attributes.setAttribute('href',link).setAttribute('class', config)}}>{{ label }}</a>

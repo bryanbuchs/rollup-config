@@ -1,0 +1,27 @@
+.paragraph-cols {
+  background-color: tint(@fog, 50%);
+  padding-block: var(--spacing);
+
+  h2 {
+    text-align: center;
+  }
+
+  .rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: calc(var(--gutter) * 2);
+
+    li {
+      max-width: 440px; // << this has to match the max-width in entity-col.less
+
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex: 1 1 0;
+    }
+  }
+}

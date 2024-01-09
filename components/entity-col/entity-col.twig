@@ -1,0 +1,24 @@
+{{ attach_library('b2b/entity-col') }}
+
+{% set config = [
+    'entity-col',
+    'entity',
+  ] %}
+
+<div{{ attributes.setAttribute('class',config) }}>
+
+  <div class="content">
+    {{ text }}
+  </div>
+
+  {% if url and label %}
+    <p class="footer">
+      {% include "@components/action/action.twig" with {
+      url: url,
+      label: label,
+      theme: theme
+    } only %}
+    </p>
+  {% endif %}
+
+</div>

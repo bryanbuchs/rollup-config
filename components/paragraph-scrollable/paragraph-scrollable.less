@@ -1,0 +1,103 @@
+.paragraph-scrollable {
+  // this is a fullbleed block, but we want spacing below the scrollbar
+  // so it doesn't sit flush if it's the bottom block
+  &:last-child {
+    padding-bottom: var(--spacing);
+  }
+
+  --heading: 44px;
+
+  @media @layout-small {
+    --heading: 28px;
+  }
+
+  @media @layout-medium {
+    // --heading: ??;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: var(--heading);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-inline: var(--gutter);
+  }
+}
+
+// This was a component but has been rolled into a shared Paragraph type.
+// if there's a need for an independent scrollable outside of the
+// Challenges & Impacts paragraphs, extract this
+
+.scrollable-container {
+  --scroll-thumb-height: 16px;
+  --scroll-area-gutter: 30px;
+
+  @media @layout-small {
+    --scroll-area-gutter: 20px;
+  }
+
+  overflow-y: visible;
+  overflow-x: auto;
+  padding-bottom: var(--scroll-thumb-height);
+
+  .scrollable-container-items {
+    padding: var(--scroll-area-gutter);
+    padding-top: 0;
+
+    .rows {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: var(--scroll-area-gutter);
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        flex: 0 0 auto;
+        display: flex;
+      }
+
+      li:last-child {
+        padding-right: var(--scroll-area-gutter);
+      }
+    }
+  }
+
+  .simplebar-track.simplebar-horizontal {
+    background-color: fade(@fog, 50%);
+    height: var(--scroll-thumb-height);
+    border-radius: calc(var(--scroll-thumb-height) / 2);
+    margin-inline: calc(
+      var(--scroll-area-gutter) - var(--scroll-thumb-height) / 3
+    );
+  }
+
+  .simplebar-scrollbar::before {
+    top: 0;
+    bottom: 0;
+    background-color: @spirited-adjusted;
+    background-image: svg-load('scrollbar-thumb.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: calc(var(--scroll-thumb-height) / 2);
+  }
+
+  .simplebar-scrollbar.simplebar-visible::before {
+    opacity: 1;
+  }
+
+  // hide scrollbar for touch devices
+  // Scrollbar itself doesn't scroll on mobile devices
+  // https://github.com/Grsmto/simplebar/issues/156
+  @media (hover: none) and (pointer: coarse) {
+    --scroll-thumb-height: 0;
+
+    .simplebar-track {
+      display: none;
+    }
+    .scrollable-container-items {
+      padding-bottom: 0;
+    }
+  }
+}

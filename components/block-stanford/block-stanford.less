@@ -1,0 +1,203 @@
+@footer-xl: ~'only screen and (min-width: 1500px)';
+@footer-lg: ~'only screen and (max-width: 1499px) and (min-width: 1024px)';
+@footer-md: ~'only screen and (max-width: 1023px) and (min-width: 768px)';
+@footer-sm: ~'only screen and (max-width: 767px) and (min-width: 576px)';
+@footer-xs: ~'only screen and (max-width: 575px)';
+
+#footer__global-footer {
+  background-color: @cardinal-red;
+
+  &,
+  a {
+    color: @white;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
+    row-gap: 0.25rem;
+    margin: 0;
+
+    @media @footer-md {
+      column-gap: 1rem;
+    }
+
+    @media @footer-sm {
+      justify-content: center;
+      column-gap: 0.75rem;
+    }
+
+    @media @footer-xs {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  .container {
+    font-size: 16px;
+    line-height: 1.25;
+    max-width: 1450px;
+    margin-inline: auto;
+    padding: 1.5rem 2rem;
+
+    @media @footer-lg {
+      padding: 1rem 2rem;
+    }
+
+    @media @footer-md {
+      padding: 1rem 1.5rem;
+    }
+
+    @media @footer-sm, @footer-xs {
+      padding: 1rem;
+    }
+
+    // layout rules
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 12px;
+    grid-template-areas:
+      'brand'
+      'links'
+      'info';
+
+    @media @footer-xl, @footer-lg, @footer-md {
+      grid-template-columns: auto 1fr;
+      grid-template-areas:
+        'brand links'
+        'brand info';
+    }
+
+    @media @footer-xl, @footer-lg {
+      grid-column-gap: 3rem;
+    }
+
+    @media @footer-md {
+      grid-column-gap: 1.5rem;
+    }
+
+    @media @footer-xs {
+      max-width: 360px;
+      margin-inline: auto;
+      grid-row-gap: 20px;
+    }
+  }
+}
+
+#global-footer__brand {
+  grid-area: brand;
+}
+
+#global-footer__nav {
+  grid-area: links;
+}
+
+#global-footer__info {
+  grid-area: info;
+}
+
+// LOGO
+#global-footer__brand a {
+  .hide-text();
+  display: block;
+  background-image: url(../../images/footer-stanford-logo@2x.png);
+  background-size: contain;
+  aspect-ratio: 220 / 102;
+  width: 116px;
+  margin-inline: auto;
+
+  @media @footer-sm {
+    width: 110px;
+  }
+}
+
+// NAV LINKS
+#global-footer__nav {
+  font-size: 18px;
+  font-weight: 600;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+
+  @media @footer-sm {
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  @media @footer-xs {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+// "Stanford Home, Maps & Directions..."
+#global-links {
+  @media @footer-md {
+    font-size: 17px;
+  }
+
+  @media @footer-sm {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+// "Terms of Use, Privacy..."
+#global-policy-links {
+  font-size: 16px;
+  font-weight: 400;
+
+  @media @footer-md {
+    font-size: 15px;
+  }
+
+  @media @footer-sm {
+    font-size: 14px;
+    // font-weight: 600;
+  }
+
+  @media @footer-xs {
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+// "©Copyright Stanford University..."
+#global-footer__info {
+  text-wrap: balance;
+  font-size: 16px;
+  font-weight: 400;
+
+  @media @footer-sm, @footer-xs {
+    text-align: center;
+  }
+
+  @media @footer-md {
+    font-size: 15px;
+  }
+
+  @media @footer-sm, @footer-xs {
+    font-size: 13px;
+  }
+
+  .vcard {
+    .adr {
+      margin-left: 1ch;
+    }
+  }
+}

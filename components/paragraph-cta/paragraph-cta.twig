@@ -1,0 +1,25 @@
+{{ attach_library('b2b/paragraph-cta') }}
+
+{%
+  set config = [
+      'layout-wide',
+      'paragraph',
+      'paragraph-cta',
+    ]
+%}
+
+<section {{attributes.setAttribute('class', config)}}>
+
+  {% if heading %}
+    <h2>{{ heading|typography }}</h2>
+  {% endif %}
+
+  <ul class="rows">
+    {% for row in rows %}
+      <li>
+        {{ row }}
+      </li>
+    {% endfor %}
+  </ul>
+
+</section>

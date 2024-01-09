@@ -1,0 +1,55 @@
+.button {
+  color: @white;
+  border-radius: 10rem;
+  font-size: 24px;
+  line-height: 1.2;
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: @spirited-adjusted;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: calc(var(--gutter) / 2) calc(var(--gutter) * 1.5);
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.4);
+
+  @media @layout-small {
+    font-size: 20px;
+    padding: 10px 1.5rem;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: @spirited;
+  }
+
+  &:active {
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  &[class*='icon']:before {
+    content: '';
+    display: block;
+    width: 32px;
+    aspect-ratio: 1;
+    background-size: contain;
+    background-position: center;
+    flex: 0 0 auto;
+
+    @media @layout-small {
+      width: 28px;
+    }
+  }
+
+  &.icon-arrow:before {
+    background-image: svg-load(
+      '@fortawesome/fontawesome-free/svgs/solid/arrow-right.svg',
+      fill= @white
+    );
+  }
+
+  &.icon-document:before {
+    background-image: svg-load('file.svg', fill= @white);
+  }
+}

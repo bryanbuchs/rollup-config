@@ -1,0 +1,40 @@
+{{ attach_library('b2b/paragraph-highlight') }}
+
+{%
+  set config = [
+		'paragraph',
+    'paragraph-highlight',
+    'theme-' ~ theme,
+		'align-' ~ align,
+		'layout-grid-fullbleed'
+  ]|join(' ')
+%}
+
+<section{{attributes.setAttribute('class', config)}}>
+
+  <div class="content">
+
+    <hgroup>
+      <h2>{{ heading|typography }}</h2>
+      <h3>{{ subheading|typography }}</h3>
+    </hgroup>
+
+    {% block content %}
+      <p>Transformation doesn't just happen at the top of an organization and it doesn't happen overnight. When you want to, or need to, fundamentally change something about your business, a quick, one-dimensional solution won't work.</p>
+
+      <ul>
+        <li>Seasoned Executives</li>
+        <li>Managers and directors</li>
+        <li>Tomorrow's Leaders - high potentials</li>
+        <li>Valued Individual Contributors</li>
+      </ul>
+
+    {% endblock %}
+
+  </div>
+
+  <div class="media">
+    {{ image }}
+  </div>
+
+</section>

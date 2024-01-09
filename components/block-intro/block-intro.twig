@@ -1,0 +1,32 @@
+{{ attach_library('b2b/block-intro') }}
+{{ attach_library('b2b/gsap') }}
+
+{% set config = [
+    'layout-grid-fullbleed',
+		'block',
+    'block-intro',
+    'theme-' ~ theme
+  ] %}
+
+<section{{ attributes.setAttribute('id','block-intro').setAttribute('class',config).setAttribute('data-words', words|join(',')) }}>
+
+  <div class="content">
+    {% block content %}
+      <p>
+        <span class="first-line">
+          Empower your
+          <span class="wrapper">
+            <strong>
+              {{ words}}
+            </strong>
+          </span>
+
+        </span>
+        with programs that blend the Business, Engineering, and Science of Transformation for a Cutting-Edge Advantage.
+      </p>
+    {% endblock %}
+  </div>
+
+  {{ image }}
+
+</section>
