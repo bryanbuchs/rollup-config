@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node esbuild.config.mjs",
+    "build2": "vite build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
